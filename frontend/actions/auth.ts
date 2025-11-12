@@ -57,6 +57,7 @@ export async function registerUserAction(
   console.log("registracion correcta");
 
   const cookieStore = await cookies();
+  if (!cookieStore) throw new Error("No cookie store");
   cookieStore.set("jwt", response.jwt, cookieConfig);
   redirect("/dashboard");
 }
